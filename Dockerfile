@@ -25,4 +25,4 @@ COPY --from=builder /app .
 
 EXPOSE 8080
 
-ENTRYPOINT ["python", "app.py"]
+ENTRYPOINT ["sh", "-c", "python -c 'from app import db; db.create_all()' && python app.py"]

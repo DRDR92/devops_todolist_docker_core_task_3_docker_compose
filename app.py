@@ -9,7 +9,11 @@ appEnv = os.environ.get("APP_ENV", "Development")
 
 # Configure the MySQL database connection
 db_host = os.environ.get("DB_HOST", "localhost")
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+mysqlconnector://app_user:1234@{db_host}/app_db'
+db_user = os.environ.get("DB_USER", "app_user")
+db_password = os.environ.get("DB_PASSWORD", "1234")
+db_name = os.environ.get("DB_NAME", "app_db")
+
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+mysqlconnector://{db_user}:{db_password}@{db_host}/{db_name}'
 
 db = SQLAlchemy(app)
 
