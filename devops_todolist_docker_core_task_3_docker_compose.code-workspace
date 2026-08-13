@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "rda_task_1_create_database",
+			"path": "../mate/rda_task_1_create_database"
+		},
+		{
+			"name": "rda_task_2_create_indexes-2",
+			"path": "../mate/rda_task_2_create_indexes-2"
+		}
+	],
+	"settings": {}
+}
