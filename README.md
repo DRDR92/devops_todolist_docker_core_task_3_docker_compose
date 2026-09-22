@@ -1,47 +1,56 @@
-# Django-Todolist
+# Django Todolist - Docker Compose Setup
 
-Django-Todolist is a todolist web application with the most basic features of most web apps, i.e. accounts/login, API and (somewhat) interactive UI.
+Multi-container Django ToDo application with MySQL database and persistent volumes.
 
----
-CSS | [Skeleton](http://getskeleton.com/)
-JS  | [jQuery](https://jquery.com/)
+## Project Overview
+Django-based todolist application deployed with Docker Compose.
+This project from Mate Academy demonstrates containerization, service orchestration, and database persistence.
 
-## Explore
-Try it out by installing the requirements. (Works only with python >= 3.8, due to Django 4)
+## What I Implemented
+- **Docker Compose orchestration** - coordinated app and database services
+- **MySQL integration** - persistent database with Docker volumes
+- **Entrypoint automation** - migrations and app startup in single command
+- **Volume management** - persistent data storage for MySQL
+- **Environment configuration** - proper separation of config and secrets
+- **Service networking** - app-to-database communication
 
-    pip install -r requirements.txt
+## Services
+- **Web**: Django application (Port 8000)
+- **Database**: MySQL with persistent volume
 
-Create a database schema:
+## Technologies
+- Docker & Docker Compose
+- Django 4+
+- MySQL 8.0+
+- Python 3.8+
 
-    python manage.py migrate
+## Quick Start
+```bash
+docker-compose up -d
+docker-compose logs -f web
+# App available at http://localhost:8000
+```
 
-And then start the server (default: http://localhost:8000)
+## Container Management
+```bash
+# View logs
+docker-compose logs web
 
-    python manage.py runserver
+# Stop containers
+docker-compose down
 
+# Stop with volume cleanup
+docker-compose down -v
+```
 
-Now you can browse the [API](http://localhost:8000/api/)
-or start on the [landing page](http://localhost:8000/)
+## Project Structure
+- `docker-compose.yml` - Multi-container orchestration
+- `Dockerfile` - Application container configuration
+- `INSTRUCTION.md` - Detailed deployment guide
 
-## Task
-#### Prerequisites
-- Fork this repository
-
-#### Requirements
-
-1. Prepare a `docker-compose.yml` file that will build and start both MySQL db and Todolist app
-2. Remove RUN python manage.py migrate as the database is no longer available at the build time
-3. Refactor ENTRYPOINT to execute both db migration and application start. Example:
-`ENTRYPOINT ["sh", "-c", “command1 && command2”]`
-4. The application should work with no issues after running docker-compose up
-5. Create the `INSTRUCTION.md` file with detailed instructions on how to run and stop containers with docker-compose
-6. Todos should be stored in MySQL Database, with a persistent volume connected
-7. Create PR with your changes and attach it for validation on a platform
-
-
-
-
-
-
-
-
+## Key Learnings
+- Docker Compose for local development
+- Database migration automation in containers
+- Persistent volume management
+- Service networking and dependencies
+- Container lifecycle management
